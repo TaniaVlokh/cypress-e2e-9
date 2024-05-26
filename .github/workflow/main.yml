@@ -10,3 +10,11 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:smoke
+      - name: Artifacts
+        uses: actions/checkout@v4
+        with:
+          name: Cypress-Reports
+          path: cypress/reports/html/index.html
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
